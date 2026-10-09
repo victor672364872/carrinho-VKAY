@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCart - Busca Segura e Menor Preço</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Stylesheet CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>SMART<b>CART</b></span>
+      </div>
+
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Pesquise produtos, marcas ou modelos...">
+        <button id="searchBtn" class="btn-search">Buscar</button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="cart-btn" id="openCartBtn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Carrinho</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout Container -->
+  <div class="app-container">
+    
+    <!-- Sidebar Filters -->
+    <aside class="sidebar">
+      <h3><i class="fa-solid fa-sliders"></i> Filtros</h3>
+      
+      <div class="filter-group">
+        <label>Categorias</label>
+        <div class="category-list">
+          <button class="cat-btn active" data-cat="all">Todas</button>
+          <button class="cat-btn" data-cat="Eletrônicos">Eletrônicos</button>
+          <button class="cat-btn" data-cat="Moda">Moda</button>
+          <button class="cat-btn" data-cat="Casa">Casa</button>
+          <button class="cat-btn" data-cat="Jogos">Jogos</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label>Garantia de Segurança</label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="verifiedOnlyCheck">
+          <span class="checkmark"></span>
+          Apenas Lojas Verificadas <i class="fa-solid fa-circle-check text-green"></i>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <label>Ordenar Por</label>
+        <select id="sortSelect" class="styled-select">
+          <option value="price-asc">Menor Preço</option>
+          <option value="price-desc">Maior Preço</option>
+          <option value="safety">Maior Nível de Segurança</option>
+        </select>
+      </div>
+
+      <div class="security-banner">
+        <i class="fa-solid fa-lock security-icon"></i>
+        <h4>100% Compra Garantida</h4>
+        <p>Monitoramos mais de 50 lojas confiáveis com entrega rastreada e seguro contra extravio.</p>
+      </div>
+    </aside>
+
+    <!-- Product Feed Section -->
+    <main class="main-content">
+      <div class="results-header">
+        <h2 id="resultsTitle">Produtos Encontrados</h2>
+        <span id="resultsCount" class="results-count">0 itens</span>
+      </div>
+
+      <!-- Grid of Products -->
+      <div class="product-grid" id="productGrid">
+        <!-- Injetado dinamicamente via JS -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Shopping Cart Drawer Overlay -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3><i class="fa-solid fa-bag-shopping"></i> Seu Carrinho</h3>
+      <button class="close-btn" id="closeCartBtn">&times;</button>
+    </div>
+
+    <div class="cart-body" id="cartItemsContainer">
+      <!-- Carrinho vazio por padrão -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-line">
+        <span>Garantia de Entrega Segura:</span>
+        <span class="text-green"><i class="fa-solid fa-check"></i> Grátis</span>
+      </div>
+      <div class="cart-summary-line total-line">
+        <span>Total:</span>
+        <span id="cartTotal">R$ 0,00</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn" disabled>Finalizar Compra Segura</button>
+    </div>
+  </aside>
+
+  <!-- Modal Comparison -->
+  <div class="modal-overlay" id="compareModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalProductName">Comparativo de Lojas</h3>
+          <p class="subtitle">Garantia de menor preço e entrega 100% assegurada</p>
+        </div>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalStoreList">
+        <!-- Injetado dinamicamente via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
